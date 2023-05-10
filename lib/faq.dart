@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
 
 class Faq extends StatelessWidget {
   const Faq({super.key});
@@ -6,11 +7,6 @@ class Faq extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Quiz app'),
-        backgroundColor: Colors.teal,
-        foregroundColor: Colors.white,
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -48,7 +44,10 @@ class Faq extends StatelessWidget {
                           RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ))),
-                  onPressed: () => {},
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyApp()),
+                  ),
                   child: const Text(
                     "Back to home",
                     style: TextStyle(fontSize: 16),

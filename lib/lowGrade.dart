@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
 
 class LowGrade extends StatelessWidget {
   const LowGrade({super.key});
@@ -53,7 +54,10 @@ class LowGrade extends StatelessWidget {
                           RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ))),
-                  onPressed: () => {},
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyApp()),
+                  ),
                   child: const Text(
                     "Back to home",
                     style: TextStyle(fontSize: 16),

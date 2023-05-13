@@ -275,18 +275,25 @@ class _QuizesState extends State<Quizes> {
                       onPressed: () {
                         // Do something with the quiz result, such as displaying it or storing it.
                         // Navigate to the appropriate page based on the quiz result.
-                        // if (quizResult >= 70) {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => HighGrade()),
-                        //   );
-                        // } else {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(builder: (context) => LowGrade()),
-                        //   );
-                        // }
+                        if (_score >= 5) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HighGrade(
+                                      numberOfQuestions: questions.length,
+                                      score: _score,
+                                    )),
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LowGrade(
+                                      numberOfQuestions: questions.length,
+                                      score: _score,
+                                    )),
+                          );
+                        }
                       },
                       child: const Text(
                         "Submit answers",

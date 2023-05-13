@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
 
 class LowGrade extends StatelessWidget {
-  const LowGrade({super.key});
+  const LowGrade(
+      {super.key, required this.numberOfQuestions, required this.score});
+  final int numberOfQuestions;
+  final int score;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +32,10 @@ class LowGrade extends StatelessWidget {
             Image.asset('images/fail.png'),
             Container(
               margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-              child: const Text(
-                "Your scroe is 2 / 10",
-                style:
-                    TextStyle(color: Colors.green, fontWeight: FontWeight.w700),
+              child: Text(
+                "Your scroe is $score / $numberOfQuestions",
+                style: const TextStyle(
+                    color: Colors.green, fontWeight: FontWeight.w700),
               ),
             ),
             Container(

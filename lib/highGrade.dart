@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
 
 class HighGrade extends StatelessWidget {
-  const HighGrade({super.key});
+  const HighGrade(
+      {super.key, required this.numberOfQuestions, required this.score});
+  final int numberOfQuestions;
 
+  final int score;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +32,10 @@ class HighGrade extends StatelessWidget {
             Image.asset('images/result.jpeg'),
             Container(
               margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-              child: const Text(
-                "Your scroe is 9 / 10",
-                style:
-                    TextStyle(color: Colors.green, fontWeight: FontWeight.w700),
+              child: Text(
+                "Your scroe is $score / $numberOfQuestions",
+                style: const TextStyle(
+                    color: Colors.green, fontWeight: FontWeight.w700),
               ),
             ),
             Container(

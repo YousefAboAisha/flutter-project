@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/addQuestion.dart';
-import 'package:flutter_application_1/faq.dart';
-import 'package:flutter_application_1/highGrade.dart';
-import 'package:flutter_application_1/lowGrade.dart';
-import 'package:flutter_application_1/quiz.dart';
-import 'package:flutter_application_1/quiz.dart';
 import 'package:flutter_application_1/quizes.dart';
-import 'package:flutter_application_1/services/sqlite_service.dart';
 
 void main() {
   runApp(const MyApp());

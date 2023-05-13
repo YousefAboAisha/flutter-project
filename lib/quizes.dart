@@ -105,7 +105,6 @@ class _QuizesState extends State<Quizes> {
                           final int correctAnswerIndex =
                               data.correctAnswerIndex;
                           int numberOfQuestions = questions.length;
-                          bool isSelected = false;
                           bool isCorrect = false;
 
                           return Container(
@@ -248,11 +247,7 @@ class _QuizesState extends State<Quizes> {
                                   correctAnswerIndex: correctAnswerIndex,
                                   numberOfQuestions: numberOfQuestions,
                                   score: _score,
-                                  onScoreUpdated: (score) {
-                                    setState(() {
-                                      _score = score;
-                                    });
-                                  },
+                                  isCorrect: isCorrect,
                                 ),
                               ],
                             ),
@@ -277,13 +272,22 @@ class _QuizesState extends State<Quizes> {
                                   RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ))),
-                      onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => _score >= 5
-                                ? const HighGrade()
-                                : const LowGrade()),
-                      ),
+                      onPressed: () {
+                        // Do something with the quiz result, such as displaying it or storing it.
+                        // Navigate to the appropriate page based on the quiz result.
+                        // if (quizResult >= 70) {
+                        //   Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => HighGrade()),
+                        //   );
+                        // } else {
+                        //   Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(builder: (context) => LowGrade()),
+                        //   );
+                        // }
+                      },
                       child: const Text(
                         "Submit answers",
                         style: TextStyle(fontSize: 16),

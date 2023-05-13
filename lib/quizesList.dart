@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 
 class QuizesList extends StatefulWidget {
-  QuizesList(
-      {super.key,
-      required this.options,
-      required this.correctAnswerIndex,
-      required this.numberOfQuestions,
-      required this.score,
-      required this.isCorrect});
+  QuizesList({
+    super.key,
+    required this.options,
+    required this.correctAnswerIndex,
+    required this.numberOfQuestions,
+    required this.score,
+    required this.isCorrect,
+    required this.result,
+    required this.id,
+  });
 
   final int correctAnswerIndex;
   final List<String> options;
   final int numberOfQuestions;
   int score;
   bool isCorrect;
+  List<bool> result;
+  int id;
 
   @override
   _QuizesListState createState() => _QuizesListState();
@@ -40,7 +45,7 @@ class _QuizesListState extends State<QuizesList>
         ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: numberOfQuestions - 1,
+          itemCount: options.length,
           itemBuilder: (BuildContext context, int index) {
             final String option = options[index];
 
@@ -51,9 +56,10 @@ class _QuizesListState extends State<QuizesList>
                       selectedOptionIndex = index;
                       if (selectedOptionIndex == correctAnswerIndex) {
                         widget.isCorrect = true;
-                        widget.score += 1;
+                        widget.result[widget.id] = true;
                       } else {
                         widget.isCorrect = false;
+                        widget.result[widget.id] = false;
                       }
                     },
                   );
@@ -64,8 +70,6 @@ class _QuizesListState extends State<QuizesList>
                   print("selectedOptionIndex: $selectedOptionIndex");
                   print("correctAnswerIndex: $correctAnswerIndex");
                   print("isCorrect ${widget.isCorrect}");
-                  print(
-                      "Your Score is ${widget.score} / ${widget.numberOfQuestions}");
                   print(
                       "#################################################################");
                 },

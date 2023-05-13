@@ -15,6 +15,7 @@ class Quizes extends StatefulWidget {
 
 class _QuizesState extends State<Quizes> {
   List<QuizQuestion> questions = [];
+  List<bool> result = [];
   bool isLoading = true;
   int _score = 0;
 
@@ -47,6 +48,7 @@ class _QuizesState extends State<Quizes> {
     // Update state with the new data
     setState(() {
       questions = data;
+      result = List.filled(data.length, false, growable: true);
       isLoading = false;
     });
   }
@@ -243,12 +245,13 @@ class _QuizesState extends State<Quizes> {
                                   ),
                                 ),
                                 QuizesList(
-                                  options: options,
-                                  correctAnswerIndex: correctAnswerIndex,
-                                  numberOfQuestions: numberOfQuestions,
-                                  score: _score,
-                                  isCorrect: isCorrect,
-                                ),
+                                    options: options,
+                                    correctAnswerIndex: correctAnswerIndex,
+                                    numberOfQuestions: numberOfQuestions,
+                                    score: _score,
+                                    isCorrect: isCorrect,
+                                    result: result,
+                                    id: index),
                               ],
                             ),
                           );
@@ -273,7 +276,12 @@ class _QuizesState extends State<Quizes> {
                             borderRadius: BorderRadius.circular(8),
                           ))),
                       onPressed: () {
-                        // Do something with the quiz result, such as displaying it or storing it.
+                        result.forEach((element) {
+                          if (element == true) {
+                            _score += 1;
+                          }
+                        });
+
                         // Navigate to the appropriate page based on the quiz result.
                         if (_score >= 5) {
                           Navigator.push(

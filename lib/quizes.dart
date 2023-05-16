@@ -58,8 +58,6 @@ class _QuizesState extends State<Quizes> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Quiz app'),
-        backgroundColor: Colors.teal,
-        foregroundColor: Colors.white,
       ),
       body: questions.length < 5
           ? const Faq()
@@ -71,8 +69,6 @@ class _QuizesState extends State<Quizes> {
                     margin: const EdgeInsets.only(top: 16),
                     child: ElevatedButton(
                       style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.teal),
                           padding:
                               MaterialStateProperty.all<EdgeInsetsGeometry>(
                                   const EdgeInsets.symmetric(
@@ -264,8 +260,6 @@ class _QuizesState extends State<Quizes> {
                     margin: const EdgeInsets.symmetric(vertical: 24),
                     child: ElevatedButton(
                       style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.teal),
                           padding:
                               MaterialStateProperty.all<EdgeInsetsGeometry>(
                                   const EdgeInsets.symmetric(
@@ -283,7 +277,7 @@ class _QuizesState extends State<Quizes> {
                         });
 
                         // Navigate to the appropriate page based on the quiz result.
-                        if (_score >= 5) {
+                        if (_score >= (questions.length * 0.50)) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(

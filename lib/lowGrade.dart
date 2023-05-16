@@ -12,8 +12,7 @@ class LowGrade extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Quiz app'),
-        backgroundColor: Colors.teal,
-        foregroundColor: Colors.white,
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Column(
@@ -33,7 +32,7 @@ class LowGrade extends StatelessWidget {
             Container(
               margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: Text(
-                "Your scroe is $score / $numberOfQuestions",
+                "Your score is $score / $numberOfQuestions",
                 style: const TextStyle(
                     color: Colors.green, fontWeight: FontWeight.w700),
               ),

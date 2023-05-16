@@ -312,8 +312,6 @@ class _AddQuestionState extends State<AddQuestion> {
               margin: const EdgeInsets.only(top: 16),
               child: ElevatedButton(
                 style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.teal),
                     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                         const EdgeInsets.symmetric(
                             vertical: 18, horizontal: 24)),

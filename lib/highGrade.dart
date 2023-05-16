@@ -5,15 +5,16 @@ class HighGrade extends StatelessWidget {
   const HighGrade(
       {super.key, required this.numberOfQuestions, required this.score});
   final int numberOfQuestions;
-
   final int score;
+
   @override
   Widget build(BuildContext context) {
+    bool isExcellent = (score >= (numberOfQuestions * 0.75));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Quiz app'),
-        backgroundColor: Colors.teal,
-        foregroundColor: Colors.white,
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Column(
@@ -40,7 +41,9 @@ class HighGrade extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-              child: const Text("Your are a superstar"),
+              child: Text(isExcellent
+                  ? "Your are a superstar"
+                  : "Keep up the good wrok!"),
             ),
             SizedBox(
               width: 200,

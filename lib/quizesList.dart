@@ -37,7 +37,6 @@ class _QuizesListState extends State<QuizesList>
   Widget build(BuildContext context) {
     super.build(context);
     final List<String> options = widget.options;
-    final int numberOfQuestions = widget.numberOfQuestions;
     final int correctAnswerIndex = widget.correctAnswerIndex;
 
     return Column(
@@ -87,9 +86,7 @@ class _QuizesListState extends State<QuizesList>
                   padding:
                       const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   child: Text(
-                    selectedOptionIndex == index
-                        ? (widget.isCorrect ? '$option (+1 point)' : option)
-                        : option,
+                    option,
                     style: TextStyle(
                       color: selectedOptionIndex == index
                           ? Colors.white

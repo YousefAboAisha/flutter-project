@@ -240,14 +240,16 @@ class _QuizesState extends State<Quizes> {
                                     ],
                                   ),
                                 ),
-                                QuizesList(
-                                    options: options,
-                                    correctAnswerIndex: correctAnswerIndex,
-                                    numberOfQuestions: numberOfQuestions,
-                                    score: _score,
-                                    isCorrect: isCorrect,
-                                    result: result,
-                                    id: index),
+                                isLoading
+                                    ? const CircularProgressIndicator()
+                                    : QuizesList(
+                                        options: options,
+                                        correctAnswerIndex: correctAnswerIndex,
+                                        numberOfQuestions: numberOfQuestions,
+                                        score: _score,
+                                        isCorrect: isCorrect,
+                                        result: result,
+                                        id: index),
                               ],
                             ),
                           );

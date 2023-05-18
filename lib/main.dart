@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/addQuestion.dart';
 import 'package:flutter_application_1/quizes.dart';
+import 'package:flutter_application_1/quizesData.dart';
 
 void main() {
   runApp(const MyApp());
@@ -79,10 +80,16 @@ class _MyHomePageState extends State<MyHomePage> {
                             builder: (context) => const AddQuestion()),
                       ),
                     }),
-            const ListTile(
-              leading: Icon(Icons.quiz),
-              title: Text("Contact Us"),
-            ),
+            ListTile(
+                leading: const Icon(Icons.quiz),
+                title: const Text("Start quiz"),
+                onTap: () => {
+                      Navigator.pop(context), // Close the drawer
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Quizes()),
+                      ),
+                    }),
             const Divider(),
             const ListTile(
               leading: Icon(Icons.exit_to_app),
@@ -109,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ))),
                 onPressed: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Quizes()),
+                  MaterialPageRoute(builder: (context) => const QuizesData()),
                 ),
                 child: const Text(
                   "Let's start!",

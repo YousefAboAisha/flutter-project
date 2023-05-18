@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/addQuestion.dart';
 import 'package:flutter_application_1/faq.dart';
 import 'package:flutter_application_1/highGrade.dart';
 import 'package:flutter_application_1/lowGrade.dart';
@@ -127,7 +126,7 @@ class _QuizesState extends State<Quizes> {
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width * 0.5,
+                    width: MediaQuery.of(context).size.width * 0.6,
                     margin: const EdgeInsets.symmetric(vertical: 24),
                     child: ElevatedButton(
                       style: ButtonStyle(
@@ -169,7 +168,7 @@ class _QuizesState extends State<Quizes> {
                         }
                       },
                       child: const Text(
-                        "Submit answers",
+                        "Submit",
                         style: TextStyle(fontSize: 16),
                       ),
                     ),

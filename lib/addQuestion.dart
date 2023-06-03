@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/services/sqlite_service.dart';
 
+import 'quizesData.dart';
+
 class AddQuestion extends StatefulWidget {
   const AddQuestion({super.key});
   @override
@@ -43,18 +45,28 @@ class _AddQuestionState extends State<AddQuestion> {
     );
   }
 
-  void _handleSubmit() async {
+  void _handleSubmit(BuildContext context) async {
     createQuizQuestion();
     await addQuestion(question);
     _formKey.currentState!.reset();
-    scaffoldMessengerKey.currentState!.showSnackBar(
+
+    // Show SnackBar
+    // ignore: use_build_context_synchronously
+    ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Question added successfully'),
-        behavior: SnackBarBehavior.floating, // Change behavior to floating
+        behavior: SnackBarBehavior.floating,
         backgroundColor: Colors.teal,
         showCloseIcon: true,
         closeIconColor: Colors.white,
       ),
+    );
+
+    // Navigate to another screen
+    // ignore: use_build_context_synchronously
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const QuizesData()),
     );
   }
 
@@ -346,7 +358,7 @@ class _AddQuestionState extends State<AddQuestion> {
                           // print('Name: $title');
                           // print('Answers: $answers');
                           // print('Correct answer: $correct_ans');
-                          _handleSubmit();
+                          _handleSubmit(context);
                         }
                       },
                       child: const Text(

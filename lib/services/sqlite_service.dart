@@ -1,6 +1,7 @@
 import 'package:sqflite/sqflite.dart' as sql;
 
 class SqliteService {
+  // Future for an Async funcion returns
   Future<void> createTables(sql.Database database) async {
     await database.execute(
       """CREATE TABLE QuizQuestions(
@@ -26,9 +27,10 @@ class SqliteService {
   // Create new question
   Future<int> createQuestion(QuizQuestion quizQuestion) async {
     final db = await SqliteService().db();
+    // Converts object to Map representation for the DB insertion
     final id = await db.insert('QuizQuestions', quizQuestion.toMap(),
         conflictAlgorithm: sql.ConflictAlgorithm.replace);
-    db.close();
+    // If there is conflict with PK, replace it with the new record
     return id;
   }
 
@@ -38,6 +40,7 @@ class SqliteService {
     final List<Map<String, Object?>> queryResult =
         await db.query('QuizQuestions', orderBy: 'id');
     return queryResult.map((e) => QuizQuestion.fromMap(e)).toList();
+    // Converts each map [Which was inserted] into a QuizQuestion object
   }
 
   // Delete question by id
@@ -64,7 +67,9 @@ class QuizQuestion {
     required this.correctAnswerIndex,
   });
 
+  // When data insertion
   Map<String, dynamic> toMap() {
+    // dynamic represnts changable variables, like: id, title, etc.
     return {
       'id': id,
       'title': title,
@@ -73,6 +78,7 @@ class QuizQuestion {
     };
   }
 
+  // When data retrieving
   static QuizQuestion fromMap(Map<String, dynamic> map) {
     return QuizQuestion(
       id: map['id'],
